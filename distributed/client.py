@@ -603,6 +603,8 @@ class Client:
         connection_limit=512,
         **kwargs,
     ):
+        print("This is Kariz-serverless")
+
         if timeout == no_default:
             timeout = dask.config.get("distributed.comm.timeouts.connect")
         if timeout is not None:
