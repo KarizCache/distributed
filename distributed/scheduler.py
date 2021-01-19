@@ -343,6 +343,9 @@ class WorkerState:
        includes those actors whose state actually lives on this worker, not
        actors to which this worker has a reference.
 
+    .. attribute: color: set, Kariz
+
+       Annotate tasks with colors for serverless scheduler, the scheduler will later prefer one of the workers that has the color
     """
 
     # XXX need a state field to signal active/removed?
@@ -1136,6 +1139,7 @@ class TaskState:
     _actor: bint
     _group: TaskGroup
     _group_key: str
+    _color: set # Kariz
 
     __slots__ = (
         # === General description ===
@@ -1185,6 +1189,7 @@ class TaskState:
         "_group",
         "_metadata",
         "_annotations",
+        "_color"
     )
 
     def __init__(self, key: str, run_spec: object):
@@ -1214,6 +1219,8 @@ class TaskState:
         self._group = None
         self._metadata = {}
         self._annotations = {}
+        self._color = set() # Kariz
+
 
     def __hash__(self):
         return self._hash
@@ -1415,6 +1422,14 @@ class TaskState:
         for ts in self._dependencies:
             nbytes += ts.get_nbytes()
         return nbytes
+
+    def set_color(self, color):
+        self._color = color
+
+    def get_color(self) -> set:
+        return self._color
+
+
 
 
 class _StateLegacyMapping(Mapping):
@@ -2416,6 +2431,45 @@ class Scheduler(ServerNode):
             annotations,
         )
 
+    
+
+    # Kariz B
+    def color_graph(
+        self, 
+        keys=None,
+        dependencies=None
+    ):
+        dependencies = dependencies or {}
+        # assigned colors
+        color = 0 # colors range from 0x000000 to 0xFFFFFF
+        stack = list(keys)
+        touched_keys = set()
+        touched_tasks = []
+        while stack:
+            k = stack[-1]
+            if k in touched_keys:
+                continue
+            deps = dependencies[k]
+            resolve = 1
+            colors = set()
+            for v in deps:
+                if v not in touched_keys:
+                    stack.append(v)
+                    resolve = 0
+                else:
+                    colors.update(self.tasks[v].get_color())
+            if not len(colors): 
+                colors.add(color)
+                color += 1; 
+
+            if resolve:
+                self.tasks[k].set_color(colors)
+                stack.pop()
+                touched_keys.add(k)
+        pass
+    # Kariz E
+
+
     def update_graph(
         self,
         client=None,
@@ -2532,6 +2586,9 @@ class Scheduler(ServerNode):
             for dep in deps:
                 dts = self.tasks[dep]
                 ts.add_dependency(dts)
+
+        # Kariz, Color the graph
+        self.color_graph(keys, dependencies)
 
         # Compute priorities
         if isinstance(user_priority, Number):
@@ -4806,7 +4863,10 @@ class Scheduler(ServerNode):
             worker_pool = self.idle or self.workers
             worker_pool_dv = cast(dict, worker_pool)
             n_workers: Py_ssize_t = len(worker_pool_dv)
-            if n_workers < 20:  # smart but linear in small case
+
+            # Kariz
+            #if n_workers < 20:  # smart but linear in small case
+            if n_workers < 0:
                 ws = min(worker_pool.values(), key=operator.attrgetter("occupancy"))
             else:  # dumb but fast in large case
                 n_tasks: Py_ssize_t = self.n_tasks
