@@ -2629,12 +2629,6 @@ class Worker(ServerNode):
                         self.scheduler_delay,
                     ),
                 )
-                # Kariz B
-                print(Fore.BLUE, 'host', self.address, ', task', ts.key, ', runtime', result['stop'] - result['start'], Style.RESET_ALL)
-                with open('/opt/dask-distributed/debug/%s'%(self.address.rsplit('/', 1)[1].replace(':', '_')), 'a') as fd:
-                    fd.write('%s:%.6f\n'%(ts.key, result['stop'] - result['start']))
-                # Kariz E
-
             except RuntimeError as e:
                 executor_error = e
                 raise
@@ -3383,7 +3377,7 @@ def execute_task(task):
     >>> execute_task((sum, [1, 2, (inc, 3)]))
     7
     """
-    print(Fore.GREEN, 'Task is', task, Style.RESET_ALL)
+    print(Fore.GREEN, 'Task is', task)
     if istask(task):
         func, args = task[0], task[1:]
         return func(*map(execute_task, args))

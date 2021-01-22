@@ -86,6 +86,12 @@ from .stealing import WorkStealing
 from .variable import VariableExtension
 from .protocol.highlevelgraph import highlevelgraph_unpack
 
+# Kariz B
+from colorama import Fore, Back, Style
+#import sys, traceback
+# Kariz E
+
+
 try:
     from cython import compiled
 except ImportError:
@@ -2506,6 +2512,16 @@ class Scheduler(ServerNode):
                 del tasks[k]
 
         dependencies = dependencies or {}
+
+        print(Fore.RED, "dump the graph to the file ", Style.RESET_ALL)
+        node_to_id = {}
+        with open('/opt/dask-distributed/benchmark/dag.g', 'w') as fd:
+            for i, node in enumerate(dependencies):
+                fd.write('v,%d,0\n'%(i))
+                node_to_id[node] = i
+            for i, node in enumerate(dependencies):
+                for dep in dependencies[node]:
+                    fd.write('e,%d,%d,0\n'%(node_to_id[dep], i))
 
         n = 0
         while len(tasks) != n:  # walk through new tasks, cancel any bad deps
@@ -6338,6 +6354,13 @@ def decide_worker(
         candidates = set(all_workers)
     else:
         candidates = {ws for dts in deps for ws in dts._who_has}
+
+    # Kariz B
+    print(Fore.YELLOW, "key", ts.key, "deps", ts.annotations, Style.RESET_ALL)
+    for ds in ts._dependencies:
+        print(Fore.LIGHTYELLOW_EX, ds, Style.RESET_ALL)
+    # Kariz E
+
     if valid_workers is None:
         if not candidates:
             candidates = set(all_workers)
