@@ -3416,9 +3416,11 @@ class Scheduler(ServerNode):
         logger.exception(clean_exception(**msg)[1])
 
     def handle_task_finished(self, key=None, worker=None, **msg):
+        # Kariz
         if worker not in self.workers:
             return
         validate_key(key)
+        print(Fore.CYAN, f'Key: {key}, Worker: {worker}, the message is {msg}', Style.RESET_ALL)
         r = self.stimulus_task_finished(key=key, worker=worker, **msg)
         self.transitions(r)
 
