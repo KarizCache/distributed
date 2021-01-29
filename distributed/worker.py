@@ -2072,9 +2072,9 @@ class Worker(ServerNode):
                             self.transition(ts, "waiting")
                     return
 
+                print(Fore.GREEN, f'responce {response["data"]}', Style.RESET_ALL)
                 if cause:
                     cause_ts = self.tasks.get(cause, TaskState(key=cause))
-                    print(Fore.GREEN, f'cause_ts {cause_ts}', Style.RESET_ALL)
                     # Kariz
                     cause_ts.startstops.append(
                         {
