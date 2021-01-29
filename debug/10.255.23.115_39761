@@ -1,0 +1,16 @@
+('qr-random_sample-getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 7, 0):4.231526
+('qr-random_sample-getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 3, 0):4.244957
+('qr-random_sample-getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 15, 0):4.240192
+('getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 3, 0):0.000020
+('getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 7, 0):0.000018
+('getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 15, 0):0.000021
+('qr-random_sample-getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 11, 0):4.289293
+('getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 11, 0):0.000011
+('qr-random_sample-getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 19, 0):4.299931
+('getitem-bba1da2ce65b2fdda8e099d62cf823ba-r1', 19, 0):0.000018
+('qr-stack-getitem-5c2c6f6a12bc393612dd6255a90c528d-r1', 1, 0):0.935348
+('getitem-5c2c6f6a12bc393612dd6255a90c528d-r1', 1, 0):0.000022
+('qr-r-inner-stack-svd-getitem-bba1da2ce65b2fdda8e099d62cf823ba-v2', 0, 0):1.142892
+('getitem-bba1da2ce65b2fdda8e099d62cf823ba-v2', 0, 0):0.000016
+('sum-sum-aggregate-mul-2b5c1ef1781a206134e94af18dad23a3', 0, 0):0.008537
+('mul-2b5c1ef1781a206134e94af18dad23a3', 0, 0):0.000019
