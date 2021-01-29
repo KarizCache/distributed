@@ -2074,12 +2074,15 @@ class Worker(ServerNode):
 
                 if cause:
                     cause_ts = self.tasks.get(cause, TaskState(key=cause))
+                    print(Fore.GREEN, "cause_ts {cause_ts}", Style.RESET_ALL)
+                    # Kariz
                     cause_ts.startstops.append(
                         {
                             "action": "transfer",
                             "start": start + self.scheduler_delay,
                             "stop": stop + self.scheduler_delay,
                             "source": worker,
+                            "nbytes": 1
                         }
                     )
 
@@ -2630,7 +2633,7 @@ class Worker(ServerNode):
                     ),
                 )
                 # Kariz B
-                print(Fore.BLUE, 'host', self.address, ', task', ts.key, ', runtime', result['stop'] - result['start'], Style.RESET_ALL)
+                #print(Fore.BLUE, 'host', self.address, ', task', ts.key, ', runtime', result['stop'] - result['start'], Style.RESET_ALL)
                 with open('/opt/dask-distributed/debug/%s'%(self.address.rsplit('/', 1)[1].replace(':', '_')), 'a') as fd:
                     fd.write('%s:%.6f\n'%(ts.key, result['stop'] - result['start']))
                 # Kariz E
@@ -3383,7 +3386,7 @@ def execute_task(task):
     >>> execute_task((sum, [1, 2, (inc, 3)]))
     7
     """
-    print(Fore.GREEN, 'Task is', task, Style.RESET_ALL)
+    #print(Fore.GREEN, 'Task is', task, Style.RESET_ALL)
     if istask(task):
         func, args = task[0], task[1:]
         return func(*map(execute_task, args))
@@ -3511,6 +3514,8 @@ def apply_function(
     msg["start"] = start + time_delay
     msg["stop"] = end + time_delay
     msg["thread"] = ident
+
+    print(Fore.CYAN, f'key {key} and msg is {msg}', Style.RESET_ALL)
     with active_threads_lock:
         del active_threads[ident]
     return msg

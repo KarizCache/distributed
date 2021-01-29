@@ -1,0 +1,100 @@
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 7, 0):0.016921
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 0, 1):0.020140
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 1, 3):0.016074
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 0, 9):0.019047
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 0, 5):0.020886
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 3, 0):0.027231
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 2, 1):0.018030
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 2, 5):0.017888
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 3, 3):0.017191
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 1, 7):0.022981
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 3, 7):0.018232
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 2, 9):0.025732
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 4, 1):0.017963
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 4, 5):0.016056
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 4, 9):0.015530
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 5, 3):0.013866
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 5, 7):0.014458
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 6, 1):0.013196
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 6, 5):0.016564
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 6, 9):0.018209
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 7, 7):0.016263
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 7, 3):0.019130
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 8, 9):0.015179
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 8, 1):0.017505
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 9, 3):0.014074
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 8, 5):0.018148
+('random_sample-b16dbcb0f8f0afc72eccd8793be638e3', 9, 7):0.014786
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 1, 1):0.013069
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 5, 1):0.013562
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 9, 1):0.013932
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 5, 2):0.013982
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 3, 2):0.015128
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 9, 5):0.011947
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 7, 4):0.012799
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 7, 6):0.012660
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 1, 9):0.012756
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 9, 3):0.018083
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 5, 3):0.020633
+('random_sample-3c5201710cd22f201e407020d32ce6c3', 5, 7):0.017924
+('matmul-4b338f69635b1c89485f7fecf46cda38', 2, 0):0.403992
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 0):0.255014
+('matmul-4b338f69635b1c89485f7fecf46cda38', 1, 1):0.378780
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 1):0.532896
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 2):0.465212
+('matmul-4b338f69635b1c89485f7fecf46cda38', 4, 2):0.635594
+('matmul-4b338f69635b1c89485f7fecf46cda38', 4, 1):0.905282
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 5):0.433973
+('matmul-4b338f69635b1c89485f7fecf46cda38', 4, 4):0.580616
+('matmul-4b338f69635b1c89485f7fecf46cda38', 6, 4):0.419559
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 8):0.385753
+('matmul-4b338f69635b1c89485f7fecf46cda38', 4, 6):0.991088
+('matmul-4b338f69635b1c89485f7fecf46cda38', 2, 6):1.294635
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 6):1.439608
+('matmul-4b338f69635b1c89485f7fecf46cda38', 0, 6):1.535657
+('matmul-4b338f69635b1c89485f7fecf46cda38', 8, 3):1.385993
+('matmul-4b338f69635b1c89485f7fecf46cda38', 4, 3):1.596259
+('matmul-4b338f69635b1c89485f7fecf46cda38', 1, 3):1.756680
+('matmul-4b338f69635b1c89485f7fecf46cda38', 6, 9):0.688990
+('matmul-4b338f69635b1c89485f7fecf46cda38', 2, 9):0.782147
+('matmul-4b338f69635b1c89485f7fecf46cda38', 6, 7):0.954189
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 10):1.508338
+('_predict-abea56d3941b0f200ae4825e8daed012', 10):0.000458
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 5):1.484442
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 8):1.467516
+('_predict-abea56d3941b0f200ae4825e8daed012', 5):0.000243
+('_predict-abea56d3941b0f200ae4825e8daed012', 8):0.000221
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 4):1.525479
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 11):1.560571
+('_predict-abea56d3941b0f200ae4825e8daed012', 4):0.000439
+('_predict-abea56d3941b0f200ae4825e8daed012', 11):0.000255
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 19):1.584102
+('_predict-abea56d3941b0f200ae4825e8daed012', 19):0.000268
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 14):1.604834
+('_predict-abea56d3941b0f200ae4825e8daed012', 14):0.000174
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 1):1.650167
+('_predict-abea56d3941b0f200ae4825e8daed012', 1):0.000179
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 13):1.734096
+('_predict-abea56d3941b0f200ae4825e8daed012', 13):0.000216
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 9):1.725975
+('_predict-abea56d3941b0f200ae4825e8daed012', 9):0.000221
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 12):1.892031
+('_predict-abea56d3941b0f200ae4825e8daed012', 12):0.000166
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 6):1.869788
+('_predict-abea56d3941b0f200ae4825e8daed012', 6):0.000171
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 3):1.968051
+('_predict-abea56d3941b0f200ae4825e8daed012', 3):0.000173
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 15):2.070110
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 18):2.065116
+('_predict-abea56d3941b0f200ae4825e8daed012', 15):0.000158
+('_predict-abea56d3941b0f200ae4825e8daed012', 18):0.000228
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 0):2.116595
+('_predict-abea56d3941b0f200ae4825e8daed012', 0):0.000204
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 7):2.066069
+('_predict-abea56d3941b0f200ae4825e8daed012', 7):0.000220
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 2):2.136924
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 16):2.147316
+('_predict-abea56d3941b0f200ae4825e8daed012', 2):0.000160
+('normal-_predict-abea56d3941b0f200ae4825e8daed012', 17):2.147458
+('_predict-abea56d3941b0f200ae4825e8daed012', 16):0.000519
+('_predict-abea56d3941b0f200ae4825e8daed012', 17):0.000426
