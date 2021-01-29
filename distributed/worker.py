@@ -2072,17 +2072,22 @@ class Worker(ServerNode):
                             self.transition(ts, "waiting")
                     return
 
-                print(Fore.GREEN, f'responce {response["data"]}', Style.RESET_ALL)
+                #print(Fore.GREEN, f'responce {response["data"]}', Style.RESET_ALL)
                 if cause:
                     cause_ts = self.tasks.get(cause, TaskState(key=cause))
                     # Kariz
+                    total_bytes = sum(
+                            self.tasks[key].get_nbytes()
+                            for key in response["data"]
+                            if key in self.tasks)
+
                     cause_ts.startstops.append(
                         {
                             "action": "transfer",
                             "start": start + self.scheduler_delay,
                             "stop": stop + self.scheduler_delay,
                             "source": worker,
-                            "nbytes": 1
+                            "nbytes": total_bytes
                         }
                     )
 
@@ -3515,7 +3520,7 @@ def apply_function(
     msg["stop"] = end + time_delay
     msg["thread"] = ident
 
-    print(Fore.CYAN, f'key {key} and msg is {msg}', Style.RESET_ALL)
+    #print(Fore.CYAN, f'key {key} and msg is {msg}', Style.RESET_ALL)
     with active_threads_lock:
         del active_threads[ident]
     return msg
