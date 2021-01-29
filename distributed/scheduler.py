@@ -4857,9 +4857,12 @@ class Scheduler(ServerNode):
         Decide on a worker for task *ts*.  Return a WorkerState.
         """
         workers: dict = cast(dict, self.workers)
+        print(Fore.RED + "Kariz: Dask workers:", workers, Style.RESET_ALL) # Kariz
+
         ws: WorkerState = None
         valid_workers: set = self.valid_workers(ts)
 
+        #print(Fore.RED + "Kariz: Dask valid workers:", valid_workers, Style.RESET_ALL) # Kariz
         if (
             valid_workers is not None
             and not valid_workers
@@ -4870,6 +4873,7 @@ class Scheduler(ServerNode):
             ts.state = "no-worker"
             return ws
 
+        #print(Fore.RED + "Kariz: Dask task state dependencies:", ts._dependencies, Style.RESET_ALL)
         if ts._dependencies or valid_workers is not None:
             ws = decide_worker(
                 ts,
@@ -4878,10 +4882,11 @@ class Scheduler(ServerNode):
                 partial(self.worker_objective, ts),
             )
         else:
+            #print(Fore.GREEN + "Kariz: inside else, workers:", self.workers, ", idels", self.idle,   Style.RESET_ALL)
             worker_pool = self.idle or self.workers
             worker_pool_dv = cast(dict, worker_pool)
             n_workers: Py_ssize_t = len(worker_pool_dv)
-
+            
             # Kariz
             #if n_workers < 20:  # smart but linear in small case
             if n_workers < 0:
@@ -4896,7 +4901,7 @@ class Scheduler(ServerNode):
                 ws,
             )
             assert ws._address in workers
-
+        print(Fore.YELLOW, 'Kariz selected worker', ws, Style.RESET_ALL)
         return ws
 
     def set_duration_estimate(self, ts: TaskState, ws: WorkerState):
@@ -6383,6 +6388,10 @@ def decide_worker(
             break
     else:
         ws = min(candidates, key=objective)
+    print('Kariz serverless', ws) #Kariz
+    with open('/root/testfunc', 'w') as fd:
+        fd.write('Hello I am in decide worker')
+
     return ws
 
 

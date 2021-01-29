@@ -1,0 +1,1000 @@
+ 1062  pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+ 1063  pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+ 1064  ls
+ 1065  cd code/
+ 1066  ls
+ 1067  cd core/
+ 1068  ls
+ 1069  cd ..
+ 1070  ls
+ 1071  cd core/
+ 1072  ls
+ 1073  cd ..
+ 1074  ls
+ 1075  mv core/ipython/ ipython/
+ 1076  ls
+ 1077  ls ipython/
+ 1078  mv ipython/ipython/* ipython/
+ 1079  ls ipython/
+ 1080  rm -rf ipython/
+ 1081  git stash
+ 1082  ls
+ 1083  ls core/
+ 1084  ls
+ 1085  ls core/
+ 1086  ls
+ 1087  cd core/ipython/
+ 1088  ls
+ 1089  cd ..
+ 1090  ls
+ 1091  vim leitmotif.py 
+ 1092  ls
+ 1093  cd /local0/
+ 1094  ls
+ 1095  mv ~/block_on_object/ /local0/
+ 1096  ls
+ 1097  cd /local0/
+ 1098  ls
+ 1099  cd block_on_object/
+ 1100  mv ../credentials.json submission/OSDI2021_usenix/figures/ipython/
+ 1101  cd submission/OSDI2021_usenix/figures/ipython/
+ 1102  ls
+ 1103  ReadGSheets.py
+ 1104  vim readGSheets.py
+ 1105  chmod readGSheets.py 
+ 1106  chmod 777 readGSheets.py 
+ 1107  ./readGSheets.py 
+ 1108  vim readGSheets.py 
+ 1109  ./readGSheets.py 
+ 1110  cd /local0/leitmotif
+ 1111  ls
+ 1112  cd code/webui/
+ 1113  ls
+ 1114  vim leitmotif.py 
+ 1115  vim swagger.yml 
+ 1116  vim leitmotif.py 
+ 1117  vim daemon.py
+ 1118  vim leitmotif.py 
+ 1119  vim daemon.py
+ 1120  cd ..
+ 1121  ls
+ 1122  cp /local0/Kariz/code/setup.sh .
+ 1123  ls
+ 1124  vim setup.sh 
+ 1125  source setup.sh 
+ 1126  ls
+ 1127  vim webui/
+ 1128  reset
+ 1129  ls
+ 1130  mkdir grpc
+ 1131  rm -rf grpc/
+ 1132  ls
+ 1133  mkdir tracepool
+ 1134  ls
+ 1135  source setup.sh 
+ 1136  cd tracepool/
+ 1137  ls
+ 1138  python -m pip install --upgrade pip
+ 1139  pip3  install grpcio
+ 1140  pip3  install grpcio 
+ 1141  pip3  install grpcio grpcio-tools
+ 1142  cd ..
+ 1143  ls
+ 1144  touch __init__.py
+ 1145  cd core/
+ 1146  ls
+ 1147  vim __init__.py
+ 1148  ls
+ 1149  cd ..
+ 1150  ls
+ 1151  cd tracepool/
+ 1152  ls
+ 1153  cd ../
+ 1154  rm -rf tracepool/
+ 1155  ls
+ 1156  cd webui/
+ 1157  ls
+ 1158  vim swagger.yml 
+ 1159  vim daemon.py
+ 1160  mv leitmotif.py leitmotif.py.bck
+ 1161  vim server.py 
+ 1162  vim daemon.py
+ 1163  cd ../../
+ 1164  ls
+ 1165  cd code/
+ 1166  l
+ 1167  cd core/
+ 1168  ls
+ 1169  cd ../webui/
+ 1170  ls
+ 1171  ./server.py 
+ 1172  vim swagger.yml 
+ 1173  ./server.py 
+ 1174  vim swagger.yml 
+ 1175  ./server.py 
+ 1176  vim ../core/leitmotif.py 
+ 1177  vim ../core/config.py
+ 1178  vim ../core/leitmotif.py 
+ 1179  ./server.py 
+ 1180  vim ../core/leitmotif.py 
+ 1181  ./server.py 
+ 1182  vim ../core/leitmotif.py 
+ 1183  ls ~
+ 1184  vim ../core/leitmotif.py 
+ 1185  vim ../core/config.py 
+ 1186  vim ../core/leitmotif.py 
+ 1187  ls
+ 1188  vim daemon.py
+ 1189  rm -rf leitmotif.py.bck 
+ 1190  ./server.py 
+ 1191  vim ../core/leitmotif.py 
+ 1192  ./server.py 
+ 1193  vim ../core/leitmotif.py 
+ 1194  vim swagger.yml 
+ 1195  vim daemon.py
+ 1196  vim ../core/leitmotif.py 
+ 1197  ./server.py 
+ 1198  vim swagger.yml +65
+ 1199  ./server.py 
+ 1200  vim ../core/leitmotif.py +
+ 1201  ./server.py 
+ 1202  ls
+ 1203  cd ..
+ 1204  grep -r -n 800 ./ 
+ 1205  grep -r -n "-800" ./ 
+ 1206  grep -r -n -800 ./ 
+ 1207  grep -r -n 800 ./ 
+ 1208  vim webui/config.py 
+ 1209  cd webui/
+ 1210  ls
+ 1211  ./server.py 
+ 1212  vim config.py 
+ 1213  ./server.py 
+ 1214  vim config.py 
+ 1215  ./server.py 
+ 1216  ls
+ 1217  cp /root/xtraces-json-800/* /local0/xtraces-json/
+ 1218  ./server.py 
+ 1219  reset
+ 1220  ls
+ 1221  cd /local0/leitmotif/code/
+ 1222  ls
+ 1223  cd webui/
+ 1224  ls
+ 1225  cd ../
+ 1226  ls
+ 1227  cd core/
+ 1228  ls
+ 1229  vim tmp
+ 1230  vim preprocessing.py 
+ 1231  vim tmp
+ 1232  pip3 install statmodels
+ 1233  pip3 install statsmodels
+ 1234  vim tmp
+ 1235  ls
+ 1236  cd /local0/leitmotif/code/
+ 1237  ls
+ 1238  vim core/leitmotif.py 
+ 1239  vim webui/swagger.yml 
+ 1240  vim core/leitmotif.py 
+ 1241  vim webui/swagger.yml 
+ 1242  vim webui/daemon.py
+ 1243  vim core/leitmotif.py 
+ 1244  cd core/
+ 1245  ls
+ 1246  vim preprocessing.py
+ 1247  chmod 777 preprocessing.py 
+ 1248  ./preprocessing.py 
+ 1249  dmesg 
+ 1250  vim preprocessing.py
+ 1251  ./preprocessing.py 
+ 1252  vim preprocessing.py
+ 1253  ./preprocessing.py 
+ 1254  vim preprocessing.py
+ 1255  ./preprocessing.py 
+ 1256  vim preprocessing.py 
+ 1257  vim preprocessing.res
+ 1258  pwd
+ 1259  vim preprocessing.res
+ 1260  vim preprocessing.res 
+ 1261  ls
+ 1262  ./preprocessing.py 
+ 1263  vim preprocessing.res 
+ 1264  vim preprocessing.
+ 1265  vim preprocessing.py
+ 1266  ./preprocessing.py 
+ 1267  vim preprocessing.py
+ 1268  ./preprocessing.py 
+ 1269  vim preprocessing.py
+ 1270  ./preprocessing.py 
+ 1271  vim preprocessing.py
+ 1272  ./preprocessing.py 
+ 1273  vim preprocessing.py
+ 1274  ./preprocessing.py 
+ 1275  vim preprocessing.py 
+ 1276  ./preprocessing.py 
+ 1277  cd /local0/
+ 1278  ls
+ 1279  reset
+ 1280  cd xtraces-json/
+ 1281  ls
+ 1282  du -h
+ 1283  ll | wc -l
+ 1284  ls /local0/
+ 1285  ls
+ 1286  cd /local0
+ 1287  cd leitmotif
+ 1288  ls
+ 1289  cd code/
+ 1290  ls
+ 1291  cd webui/
+ 1292  ls
+ 1293  vim config.py 
+ 1294  ls /local0/leitmotif/data/gaston/outputs/400traces.sp400.lg
+ 1295  ./server.py 
+ 1296  cd ..
+ 1297  ls
+ 1298  source setup.sh 
+ 1299  git add .
+ 1300  git commit -m "update collapsing"
+ 1301  git push
+ 1302  cd webui/
+ 1303  ls
+ 1304  ./server.py 
+ 1305  cd /local0/leitmotif
+ 1306  ls
+ 1307  cd code/
+ 1308  ls
+ 1309  source setup.sh 
+ 1310  cd webui/
+ 1311  ls
+ 1312  ./server.py 
+ 1313  vim /local0/leitmotif/code/core/leitmotif.py
+ 1314  vim /local0/leitmotif/code/core/leitmotif.py +91
+ 1315  vim config.py 
+ 1316  vim /local0/leitmotif/code/core/leitmotif.py +91
+ 1317  vim config.py 
+ 1318  vim /local0/leitmotif/code/core/leitmotif.py +91
+ 1319  ./server.py 
+ 1320  reset
+ 1321  ls
+ 1322  cd leitmotif/
+ 1323  sl
+ 1324  ls
+ 1325  history 
+ 1326  cd /local0/leitmotif/code/core/
+ 1327  ls
+ 1328  cd ..
+ 1329  ls
+ 1330  source setup.sh 
+ 1331  cd webui/
+ 1332  ls
+ 1333  vim config.py 
+ 1334  ./server.py 
+ 1335  vim ../core/leitmotif.py 
+ 1336  ls
+ 1337  vim config.py 
+ 1338  ./server.py 
+ 1339  ks
+ 1340  ls
+ 1341  cd /local0/leitmotif
+ 1342  ls
+ 1343  cd code/
+ 1344  ls
+ 1345  reset
+ 1346  ls
+ 1347  cd code
+ 1348  cd core/
+ 1349  ls
+ 1350  vim preprocessing.py 
+ 1351  cat preprocessing.py 
+ 1352  cd /local0/
+ 1353  ls
+ 1354  tar -xvfz xtraces-json-11Nov.tar.gz
+ 1355  tar -xvf xtraces-json-11Nov.tar.gz
+ 1356  ls
+ 1357  cd xtraces-json/
+ 1358  ls
+ 1359  du -h ./
+ 1360  cd ..
+ 1361  ls
+ 1362  rm -rf xtraces-json
+ 1363  tar -xvf xtraces-json-11Nov.tar.gz
+ 1364  ls
+ 1365  cd xtraces-json/
+ 1366  du -h ./
+ 1367  ll -lht
+ 1368  ll -lht ./
+ 1369  ll -lht | wc -l
+ 1370  reset
+ 1371  ;s
+ 1372  ls
+ 1373  1606483259,118
+ 1374  1606483260,531
+ 1375  1606483261,1523
+ 1376  1606483262,895
+ 1377  1606483263,10439
+ 1378  1606483264,75
+ 1379  1606483265,402
+ 1380  1606483266,1092
+ 1381  1606483267,295
+ 1382  1606483268,300
+ 1383  1606483269,300
+ 1384  1606483270,444
+ 1385  1606483271,1155
+ 1386  1606483272,349
+ 1387  1606483273,402
+ 1388  1606483274,480
+ 1389  1606483275,402
+ 1390  1606483276,1026
+ 1391  cd /local0/
+ 1392  ls
+ 1393  vim netmon.res
+ 1394  rm netmon.res 
+ 1395  vim netmon.res
+ 1396  rm netmon.res 
+ 1397  vim netmon.res
+ 1398  rm netmon.res 
+ 1399  vim netmon.res
+ 1400  rm netmon.res 
+ 1401  vim netmon.res
+ 1402  vim netmon_10g.res
+ 1403  exit
+ 1404  reset
+ 1405  ls
+ 1406  cd /local0/leitmotif
+ 1407  ls
+ 1408  cd code/webui/
+ 1409  ls
+ 1410  cd ..
+ 1411  source setup.sh 
+ 1412  cd webui/
+ 1413  ls
+ 1414  ./server.py 
+ 1415  exit
+ 1416  ps ax | grep server
+ 1417  screen -x
+ 1418  ls
+ 1419  screen
+ 1420  screen -x 5622.pts-0.bu-23-115 
+ 1421  ls
+ 1422  ifconfig
+ 1423  li
+ 1424  jupyter notebook list
+ 1425  ls
+ 1426  cd /local0/
+ 1427  ls
+ 1428  cd block_on_object/
+ 1429  ls
+ 1430  git branch
+ 1431  git pull
+ 1432  ls
+ 1433  cd submission/OSDI2021_usenix/
+ 1434  ls
+ 1435  cd figures
+ 1436  ls
+ 1437  vim config.yaml 
+ 1438  ./plot_impulse.py 
+ 1439  jupyter notebook list
+ 1440  ls /local0/block_on_object/bcache/fio/netmon/
+ 1441  ls
+ 1442  ./plot_impulse.py 
+ 1443  vim config.yaml 
+ 1444  ls /local0/block_on_object/bcache/fio/netmon/
+ 1445  vim config.yaml 
+ 1446  cd /local0/
+ 1447  sl
+ 1448  ls
+ 1449  cd block_on_object
+ 1450  ls
+ 1451  git branch 
+ 1452  git pull
+ 1453  git checkout bcache
+ 1454  git branch
+ 1455  cd ../
+ 1456  mkdir bcacheversion
+ 1457  cd bcacheversion/
+ 1458  mania@immortal:~/Northeastern/MoC/bcachev$ git clone git@bitbucket.org:hajkazemi/block_on_object.git -b bcache
+ 1459  git clone git@bitbucket.org:hajkazemi/block_on_object.git -b bcache
+ 1460  ls
+ 1461  vim block_on_object/
+ 1462  cd block_on_object/
+ 1463  ls
+ 1464  cd bcache/
+ 1465  ls
+ 1466  pwd
+ 1467  ls fio/disdisknetmon/
+ 1468  cd ../
+ 1469  ls
+ 1470  cd bcache/
+ 1471  ls
+ 1472  ls filebench/disknetmon/
+ 1473  git status
+ 1474  cd /local0/block_on_object
+ 1475  ls
+ 1476  git status
+ 1477  git add submission/OSDI2021_usenix/figures/fig_impulse_10Gcache.pdf
+ 1478  git add submission/OSDI2021_usenix/figures/fig_impulse_10Gcache.png
+ 1479  git add submission/OSDI2021_usenix/figures/fig_impulse_dis10Gcache.pdf submission/OSDI2021_usenix/figures/fig_impulse_dis10Gcache.png submission/OSDI2021_usenix/figures/fig_impulse_dis700Gcache.pdf submission/OSDI2021_usenix/figures/fig_impulse_dis700Gcache.png
+ 1480  ls bcache/
+ 1481  ls fio_test/
+ 1482  cd bcache/fio/
+ 1483  ls
+ 1484  ls disknetmon/
+ 1485  cd ../../
+ 1486  git status
+ 1487  git add submission/OSDI2021_usenix/figures/fig_impulse_bcache10Gcache.pdf submission/OSDI2021_usenix/figures/fig_impulse_bcache10Gcache.png submission/OSDI2021_usenix/figures/fig_impulse_dis700Gcache.png submission/OSDI2021_usenix/figures/fig_impulse_dis700Gcache.pdf submission/OSDI2021_usenix/figures/fig_impulse_dis10Gcache.png submission/OSDI2021_usenix/figures/fig_impulse_dis10Gcache.pdf 
+ 1488  git commit -m "update impulse figures"
+ 1489  git push
+ 1490  git pull
+ 1491  git push
+ 1492  git status
+ 1493  cd submission/OSDI2021_usenix/figures/
+ 1494  ls
+ 1495  rm plot_barstack.py 
+ 1496  ls
+ 1497  cd /local0/
+ 1498  locate dis
+ 1499  locate disdisknetmon
+ 1500  exit
+ 1501  reset
+ 1502  ls
+ 1503  cd /opt/
+ 1504  l
+ 1505  la
+ 1506  ls
+ 1507  git clone https://github.com/dask/dask.git
+ 1508  rm -rf https://github.com/dask/dask.git
+ 1509  ls
+ 1510  rm -rf dask
+ 1511  git clone git@github.com:maniaabdi/dask.git
+ 1512  ls
+ 1513  cd dask/
+ 1514  python -m pip install .
+ 1515  /usr/bin/python3 -m pip install --upgrade pip
+ 1516  python -m pip install -e .
+ 1517  py.test dask
+ 1518  python -m pip install ".[complete]"
+ 1519  py.test dask
+ 1520  pip3 install bokeh gcsfs fsspec fastparquet distributed cityhash cloudpickle
+ 1521  pip3 install murmurhash numpy pandas partd psutil pyarrow s3fs scipy sqlalchemy cytoolz/toolz xxhash
+ 1522  pip3 install murmurhash numpy pandas partd psutil pyarrow s3fs scipy sqlalchemy cytoolz xxhash
+ 1523  pip3 install murmurhash numpy pandas partd psutil pyarrow s3fs scipy sqlalchemy xxhash
+ 1524  pip install cytoolz
+ 1525  pip3 install cytoolz
+ 1526  pip3 install botocore --upgrade
+ 1527  pip3 install boto3 botocore --upgrade
+ 1528  pip3 install murmurhash numpy pandas partd psutil pyarrow s3fs scipy sqlalchemy cytoolz xxhash
+ 1529  pip3 install --upgrade murmurhash numpy pandas partd psutil pyarrow s3fs scipy sqlalchemy cytoolz xxhash
+ 1530  pip3 install murmurhash numpy pandas partd psutil pyarrow s3fs scipy sqlalchemy cytoolz xxhash
+ 1531  py.test dask
+ 1532  pip3 install cupy xarray  fastavro  moto  pyarrow.orc  cachey   graphviz 
+ 1533  pip3 install cupy xarray  fastavro  moto  pyarrow[orc]  cachey   graphviz 
+ 1534  pip3 install xarray  fastavro  moto  pyarrow[orc]  cachey   graphviz 
+ 1535  pip3 install aiobotocore
+ 1536  pip3 install botocore --upgrade
+ 1537  pip3 install aiobotocore --upgrade
+ 1538  pip install botocore
+ 1539  pip3 install botocore
+ 1540  pip3 install botocore==1.20.0
+ 1541  pip3 install skimage sparse h5py zarr tiledb hfft ihfft rfft2 irfft2 rfftn  irfftn crick
+ 1542  pip3 install skimage sparse h5py zarr tiledb fft crick
+ 1543  pip3 install crick
+ 1544  pip3 install skimage sparse h5py zarr tiledb fft
+ 1545  pip3 install skimage sparse h5py zarr tiledb fft --user
+ 1546  pip3 install sparse h5py zarr tiledb fft --user
+ 1547  pip install crick
+ 1548  pip install Cython
+ 1549  pip3 install Cython
+ 1550  pip install crick
+ 1551  pip3 install skimage
+ 1552  pip3 install scikit-image
+ 1553  pip3 install xarray  fastavro  moto  pyarrow[orc]  cachey   graphviz 
+ 1554  py.test dask
+ 1555  reset
+ 1556  ls
+ 1557  dask-worker 127.0.0.1:8786
+ 1558  ls
+ 1559  cd /opt/
+ 1560  ls
+ 1561  cd dask/
+ 1562  ls
+ 1563  cd ..
+ 1564  git clone git@github.com:maniaabdi/dask-distributed.git
+ 1565  ls
+ 1566  cd dask-distributed/
+ 1567  ls
+ 1568  python setup.py install
+ 1569  ls
+ 1570  vim ~/.bashrc 
+ 1571  owd
+ 1572  pwd
+ 1573  ls
+ 1574  mkdir tests
+ 1575  vim tests/
+ 1576  cd tests/
+ 1577  ls
+ 1578  vim helloword.py
+ 1579  cd ../
+ 1580  python3 setup.py install
+ 1581  cd tests/
+ 1582  ls
+ 1583  chmod 777 helloword.py 
+ 1584  ./helloword.py 
+ 1585  dask-scheduler
+ 1586  cd ../
+ 1587  sl
+ 1588  vim distributed/scheduler.py 
+ 1589  dask-scheduler
+ 1590  vim distributed/scheduler.py 
+ 1591  python3 setup.py install
+ 1592  dask-scheduler
+ 1593  reset
+ 1594  ls
+ 1595  cd /opt/dask-distributed/tests/
+ 1596  ls
+ 1597  vim helloword.py 
+ 1598  ./helloword.py 
+ 1599  free -m
+ 1600  top
+ 1601  free -m
+ 1602  top -o MEM
+ 1603  top -o %MEM
+ 1604  ps ax | grep server.py
+ 1605  vim helloword.py 
+ 1606  ./helloword.py 
+ 1607  cd ../../
+ 1608  ls
+ 1609  cd /local0/
+ 1610  ls
+ 1611  ls /opt/
+ 1612  ls
+ 1613  cd /opt/
+ 1614  ls
+ 1615  rm -rf dask dask-distributed/
+ 1616  git clone git@github.com:KarizCache/dask-distributed.git
+ 1617  git clone git@github.com:KarizCache/dask.git
+ 1618  cd /local0/
+ 1619  git clone git@github.com:KarizCache/dask-tutorial.git
+ 1620  cd -
+ 1621  cd dask
+ 1622  ls
+ 1623  vim setup.py 
+ 1624  lsb_release 
+ 1625  lsb_release --name
+ 1626  uname -r
+ 1627  lsb_release -a
+ 1628  sudo apt update
+ 1629  sudo apt install software-properties-common
+ 1630  sudo add-apt-repository ppa:deadsnakes/ppa
+ 1631  sudo apt install python3.8
+ 1632  python3.8 --version
+ 1633  sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+ 1634  sudo update-alternatives --config python3
+ 1635  $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+ 1636  sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+ 1637  sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+ 1638  $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+ 1639  apt-get install python-apt
+ 1640  $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+ 1641  vncserver -list
+ 1642  sudo update-alternatives --config python3
+ 1643  sudo update-alternatives --config python
+ 1644  $ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+ 1645  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
+ 1646  sudo update-alternatives --config python
+ 1647  python --version
+ 1648  sudo apt install python3.8-pip
+ 1649  python -m pip --version
+ 1650  sudo apt remove python-pip
+ 1651  sudo apt remove python3-pip
+ 1652  sudo apt install python3-pip
+ 1653  pip3 --version
+ 1654  sudo apt install python3-distutils
+ 1655  pip3 --version
+ 1656  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+ 1657  python3 get-pip.py --force-reinstall
+ 1658  pip3 --version
+ 1659  pip --version
+ 1660  cd /opt/dask
+ 1661  ls
+ 1662  git remote
+ 1663  git remote origin
+ 1664  git remote origin -b
+ 1665  git remote origin -v
+ 1666  git remote -v
+ 1667  reset
+ 1668  vim setup.py 
+ 1669  python -m pip install ".[complete]"
+ 1670  python -m pip install -e ".[complete]"
+ 1671  sudo apt install libpython3.8-dev
+ 1672  python -m pip install -e ".[complete]"
+ 1673  cd dask
+ 1674  ls
+ 1675  py.test dask
+ 1676  cd ..
+ 1677  ls
+ 1678  pip install pytest
+ 1679  cd dask
+ 1680  py.test dask
+ 1681  cd ..
+ 1682  py.test dask
+ 1683  pip install cupy scipy xarray graphviz zarr multipledispatch pyarrow
+ 1684  sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+ 1685  sudo apt-get install cuda
+ 1686  lspci | grep -i nvidia
+ 1687  uname -m && cat /etc/*release
+ 1688  gcc --version
+ 1689  sudo apt-get install linux-headers-$(uname -r)
+ 1690  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/<distro>/<architecture>/7fa2af80.pub
+ 1691  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/bionic/x86_64/7fa2af80.pub
+ 1692  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+ 1693  sudo apt-get install build-essential dkms
+ 1694  sudo apt-get install freeglut3 freeglut3-dev libxi-dev libxmu-dev
+ 1695  ls
+ 1696  exit
+ 1697  synapti
+ 1698  synaptic
+ 1699  apt-get install python-apt
+ 1700  apt-get install python3-apt
+ 1701  synaptic
+ 1702  locate synaptic
+ 1703  apt-get remove --purge python-apt
+ 1704  apt-get remove --purge python3-apt
+ 1705  apt-get install python3-apt python-apt
+ 1706  synaptic
+ 1707  python --version
+ 1708  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-11-2_11.2.0-1_amd64.deb
+ 1709  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+ 1710  sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb 
+ 1711  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+ 1712  sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+ 1713  sudo apt-get update
+ 1714  sudo apt-get install cuda
+ 1715  ls
+ 1716  cd /opt/dask
+ 1717  ls
+ 1718  sudo apt-get install freeglut3 freeglut3-dev libxi-dev libxmu-dev
+ 1719  history | grep pip
+ 1720  pip install cupy scipy xarray graphviz zarr multipledispatch pyarrow
+ 1721  pip install scipy xarray graphviz zarr multipledispatch pyarrow
+ 1722  pip3 install scipy xarray graphviz zarr multipledispatch pyarrow
+ 1723  pip3 install sparse skimage fastavro aiohttp s3fs sqlalchemy
+ 1724  pip3 install sparse scikit-image fastavro aiohttp s3fs sqlalchemy
+ 1725  pip3 install cachepy h5py tiledb numba
+ 1726  py.test dask
+ 1727  pip3 install boto3 cachey pyarrow[orc]
+ 1728  pip3 install --upgrade boto3 cachey pyarrow[orc]
+ 1729  py.test dask
+ 1730  pip3 install moto cupy
+ 1731  pip3 install moto
+ 1732  pip3 install moto pyyaml
+ 1733  python -m pip install -U setuptools pi
+ 1734  pip3 install Optuna
+ 1735  pip3 install cupy
+ 1736  which cuda
+ 1737  nvcc --version
+ 1738  locate cuda
+ 1739  apt-get install cuda-11-2 cuda-command-line-tools-11-2 cuda-gdb-11-2  cuda-libraries-dev-11-2  cuda-
+ 1740  locate nvcc
+ 1741  apt-get install cuda-driver  cuda-nvcc-11-2 uda-nvdisasm-11-2 
+ 1742  apt-get install  cuda-nvcc-11-2
+ 1743  vim ~/.bashrc
+ 1744  exit
+ 1745  locate cublas_v2
+ 1746  locate cublas_v2.h
+ 1747  cd /opt/dask
+ 1748  ls
+ 1749  vim errors
+ 1750  cd ../../
+ 1751  ls
+ 1752  sudo apt update
+ 1753  sudo apt install xfce4 xfce4-goodies
+ 1754  sudo apt install tightvncserver
+ 1755  vncserver
+ 1756  vncserver -kill :1
+ 1757  mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
+ 1758  nano ~/.vnc/xstartup
+ 1759  rm ~/.vnc/xstartup
+ 1760  vncserver
+ 1761  exit
+ 1762  vncserver -kill :1
+ 1763  mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
+ 1764  vim ~/.vnc/xstartup
+ 1765  sudo chmod +x ~/.vnc/xstartup
+ 1766  vncserver
+ 1767  exit
+ 1768  ls
+ 1769  vncserver --help
+ 1770  ifconfig
+ 1771  cd /opt/dask
+ 1772  ls
+ 1773  nvcc --version
+ 1774  pip3 install cupy
+ 1775  nvcc --version
+ 1776  which cuda
+ 1777  py.test dask
+ 1778  pip3 install moto
+ 1779  sudo -H pip3 install --upgrade PyYAML
+ 1780  pip install chatterbot
+ 1781  pip uninstall PyYAML
+ 1782  sudo -H pip3 install --upgrade PyYAML
+ 1783  pip3 uninstall PyYAML
+ 1784  pip install PyYAML --force-reinstall
+ 1785  pip3 uninstall PyYAML 
+ 1786  pip3 purge PyYAML 
+ 1787  pip3 help
+ 1788  pip3 uninstall PyYAML 
+ 1789  pip install PyYAML --force-reinstall
+ 1790  pip install PyYAML
+ 1791  pip3 install moto
+ 1792  pip uninstall --no-cache-dir PyYAML
+ 1793  pip install conan --ignore-installed PyYAML
+ 1794  pip install PyYAML --ignore-installed
+ 1795  pip3 install --upgrade urllib3 canon
+ 1796  py.test dask
+ 1797  pip3 install --upgrade moto 
+ 1798  py.test dask
+ 1799  pip3 install --upgrade flask pyarrow.orc
+ 1800  pip3 install --upgrade flask
+ 1801  pip3 install --upgrade pyarrow
+ 1802  py.test dask
+ 1803  pip3 install --upgrade pyarrow --force-reinstall
+ 1804  py.test dask
+ 1805  vim  dask/dataframe/io/tests/test_sql.py 
+ 1806  vim /usr/local/lib/python3.8/dist-packages/_pytest/fixtures.py
+ 1807  pip3 install pyarrow 
+ 1808  py.test dask
+ 1809  pip uninstall cupy
+ 1810  pip install cupy-cuda11
+ 1811  pip install cupy-cuda110
+ 1812  pip install cupy
+ 1813  dmesg 
+ 1814  py.test dask
+ 1815  sudo apt-get install libnvrtc9.1 
+ 1816  py.test dask
+ 1817  cp -rs /mnt/usr/lib /usr/
+ 1818  cp -rs /usr/local/cuda/lib64/ /lib64/
+ 1819  py.test dask
+ 1820  locate libnvrtc.so.11.0
+ 1821  pip install cupy-cuda112
+ 1822  ls /usr/local/cuda-11/lib64/libnvrtc.so.11.2 /usr/lib/libnvrtc.so.11.0
+ 1823  ln -s /usr/local/cuda-11/lib64/libnvrtc.so.11.2 /usr/lib/libnvrtc.so.11.0
+ 1824  py.test dask
+ 1825  pip install cupy --no-cache-dir -vvvv
+ 1826  rm -rf ~/.vnc/*
+ 1827  ps ax | grep vnc
+ 1828  sudo kill -9 37415
+ 1829  ps ax | grep vnc
+ 1830  vncserver -kill :1
+ 1831  vncserver
+ 1832  vncserver -kill :2
+ 1833  rm -rf ~/.vnc/
+ 1834  vncserver
+ 1835  vim /root/.vnc/bu-23-115:2.log
+ 1836  netstat -ano 
+ 1837  netstat -ano | grep 590
+ 1838  ssh -t -R 5933:localhost:5900 user@third-machine.net
+ 1839  vim ~/.ssh/config
+ 1840  ssh -t -R 5933:localhost:5902 kzn_hil
+ 1841  exit
+ 1842  history | grep alternative
+ 1843  sudo update-alternatives --config python
+ 1844  exit
+ 1845  python --version
+ 1846  history 
+ 1847  which python
+ 1848  rm /usr/bin/python
+ 1849  sudo update-alternatives --config python
+ 1850  python --version
+ 1851  ln -s /usr/bin/python3.6 /usr/bin/python
+ 1852  rm /usr/bin/python
+ 1853  ln -s /usr/bin/python3.6 /usr/bin/python
+ 1854  python --version
+ 1855  rm /usr/bin/python
+ 1856  ln -s /usr/bin/python2.7 /usr/bin/python
+ 1857  python --version
+ 1858  rm /usr/bin/python
+ 1859  sudo update-alternatives --config python
+ 1860  python --version
+ 1861  sudo apt-get reinstall python3.6
+ 1862  sudo apt-get install python3.6
+ 1863  sudo apt-get purge python3.6
+ 1864  sudo apt-get install python3.6
+ 1865  sudo apt-get install --reinstall python3.6
+ 1866  python --version
+ 1867  cd /opt/
+ 1868  la
+ 1869  ls
+ 1870  git clone git@github.com:KarizCache/dask-distributed.git
+ 1871  rm -rf dask-distributed/
+ 1872  git clone git@github.com:KarizCache/dask-distributed.git
+ 1873  cd dask-distributed/
+ 1874  python setup.py install
+ 1875  cd ..
+ 1876  cd dask-distributed/
+ 1877  ls
+ 1878  mkdir tests
+ 1879  ls
+ 1880  cd tests/
+ 1881  ls
+ 1882  vim test_01.py
+ 1883  chmod 777 test_01.py 
+ 1884  ./test_01.py 
+ 1885  cd /opt/dask
+ 1886  ls
+ 1887  py.test dask
+ 1888  pip3 install xarray flask click 
+ 1889  sudo apt-get install python3-distutils
+ 1890  sudo apt-get install python3-apt
+ 1891  py.test dask
+ 1892  python -m pip install -e ".[complete]"
+ 1893  history | --upgrade
+ 1894  history | grep --upgrade
+ 1895  history | grep upgrade
+ 1896  python -m pip install -e ".[complete]"
+ 1897  py.test dask
+ 1898  vim /usr/local/lib/python3.8/dist-packages/_pytest/fixtures.py +1352
+ 1899  py.test dask
+ 1900  vim /usr/local/lib/python3.8/dist-packages/_pytest/fixtures.py +1352
+ 1901  py.test dask
+ 1902  vim dask/dataframe/io/tests/test_sql.py +33
+ 1903  vim /usr/local/lib/python3.8/dist-packages/_pytest/fixtures.py +1352
+ 1904  vim dask/dataframe/io/tests/test_sql.py +33
+ 1905  grep -r -n yield_fixture  ./
+ 1906  vim ./dask/dataframe/io/tests/test_sql.py +32
+ 1907  p
+ 1908  sudo apt-get install firefox
+ 1909  cd ~/Downloads/
+ 1910  ls
+ 1911  ;s
+ 1912  ls 
+ 1913  cd ~/Desktop/
+ 1914  ls
+ 1915  mv /tmp/mozilla_root0/pycharm-community-2020.3.tar.gz .
+ 1916  ls
+ 1917  tar -xvf pycharm-community-2020.3.tar.gz 
+ 1918  sudo snap install pycharm-professional --classic --edge
+ 1919  sudo apt-get install snap
+ 1920  sudo snap install pycharm-professional --classic --edge
+ 1921  snap install pycharm-professional --classic --edge
+ 1922  apt install snapd
+ 1923  sudo snap install pycharm-professional --classic --edge
+ 1924  dask-worker 127.0.0.1:8786
+ 1925  dask-worker 10.255.23.115:8786
+ 1926  dask-worker 127.0.0.1:8786
+ 1927  dask-worker 10.255.23.115:8786
+ 1928  cd /opt/dask-distributed/
+ 1929  ls
+ 1930  cd tests/
+ 1931  ls
+ 1932  vim test_01.py 
+ 1933  ./test_01.py 
+ 1934  vim test_01.py 
+ 1935  ./test_01.py 
+ 1936  vim test_01.py 
+ 1937  ./test_01.py 
+ 1938  pip install graphviz
+ 1939  sudo apt install python-pydot python-pydot-ng graphviz # python-pydot-ng isn't in the 14.04 repos
+ 1940  pip install --upgrade graphviz
+ 1941  ./test_01.py 
+ 1942  ls
+ 1943  cd ..
+ 1944  git add .
+ 1945  git commit -m "The first example"
+ 1946  git push
+ 1947  ls
+ 1948  cd tests/
+ 1949  ls
+ 1950  cp test_01.py test_01_1.py 
+ 1951  vim test_01_1.py 
+ 1952  ls
+ 1953  ./test_01_1.py 
+ 1954  vim test_01_1.py 
+ 1955  ./test_01_1.py 
+ 1956  cp test_01_1.py test_01_1p.py 
+ 1957  vim test_01_1p.py 
+ 1958  ./test_01_1p.py
+ 1959  vim test_01_1p.py 
+ 1960  ./test_01_1p.py
+ 1961  ls root
+ 1962  ./test_01_1p.py
+ 1963  ls /root
+ 1964  ./test_01_1p.py
+ 1965  ls /root
+ 1966  ./test_01_1p.py
+ 1967  ls /root
+ 1968  vim ./test_01_1p.py
+ 1969  ./test_01_1p.py
+ 1970  vim ./test_01_1p.py
+ 1971  ./test_01_1p.py
+ 1972  cd /opt/dask
+ 1973  locate dask-scheduler
+ 1974  ll -lht /usr/local/bin/dask-scheduler
+ 1975  ll -a /usr/local/bin/dask-scheduler
+ 1976  ln -l /usr/local/bin/dask-scheduler
+ 1977  readlink -f $(which dask-scheduler)
+ 1978  readlink -f /usr/local/bin/dask-scheduler
+ 1979  vim /usr/local/bin/dask-scheduler
+ 1980  dask-scheduler
+ 1981  python -m pip install jupyter-server-proxy
+ 1982  dask-scheduler
+ 1983  ls
+ 1984  ls dask
+ 1985  vim dask/distributed.py 
+ 1986  grep -r -n distributed ./
+ 1987  cd ../dask-distributed/
+ 1988  ls
+ 1989  vim distributed/scheduler.py 
+ 1990  python setup.py install
+ 1991  dask-scheduler 
+ 1992  vim distributed/scheduler.py 
+ 1993  python setup.py install
+ 1994  dask-scheduler 
+ 1995  python setup.py install
+ 1996  vim distributed/scheduler.py 
+ 1997  python setup.py install
+ 1998  dask-scheduler 
+ 1999  /opt/dask-distributed/tests
+ 2000  cd /opt/dask-distributed/tests
+ 2001  l
+ 2002  ./test_01_1p.py 
+ 2003  ls
+ 2004  la
+ 2005  vim test_01_1p
+ 2006  vim test_01_1p.py 
+ 2007  cd ..
+ 2008  cd tests/
+ 2009  ./test_01_1p.py 
+ 2010  cd ..
+ 2011  ls
+ 2012  vim setup.py 
+ 2013  pip install -e .
+ 2014  test/test_01_1p.py 
+ 2015  tests/test_01_1p.py 
+ 2016  ls /root/testfunc 
+ 2017  vim /root/testfunc 
+ 2018  vim distributed/scheduler.py 
+ 2019  vim /root/testfunc 
+ 2020  vim distributed/scheduler.py 
+ 2021  ls
+ 2022  ls tests/
+ 2023  cd tests/
+ 2024  vim test_01_1p.py 
+ 2025  ll -lht
+ 2026  cd ../
+ 2027  ls
+ 2028  ps ax | grep dask
+ 2029  tests/test_01_1p.py 
+ 2030  locate dask-scheduler
+ 2031  vim /usr/local/bin/dask-scheduler
+ 2032  vim distributed/scheduler.py 
+ 2033  pip install colorama
+ 2034  vim distributed/scheduler.py 
+ 2035  pip install -e .
+ 2036  pip install -e . --upgrade
+ 2037  pip install --force -e . 
+ 2038  history | grep setup.py 
+ 2039  python setup.py install --force; pip install -e . 
+ 2040  tests/test_01_1p.py 
+ 2041  vim distributed/scheduler.py 
+ 2042  python setup.py install --force; pip install -e . 
+ 2043  tests/test_01_1p.py 
+ 2044  vim distributed/scheduler.py 
+ 2045  python setup.py install --force; pip install -e . 
+ 2046  tests/test_01_1p.py 
+ 2047  vim distributed/scheduler.py 
+ 2048  ls
+ 2049  cd ..
+ 2050  ls
+ 2051  cd dask-distributed/
+ 2052  ls
+ 2053  git add .
+ 2054  git commit -m "Add Kariz-Serverless first steps"
+ 2055  vim .gitignore
+ 2056  git rm venv
+ 2057  git rm -r venv
+ 2058  git add .
+ 2059  git commit -m "Add Kariz-Serverless first steps"
+ 2060  git push
+ 2061  histor
