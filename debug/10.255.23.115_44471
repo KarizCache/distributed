@@ -1,0 +1,12 @@
+('qr-random_sample-getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 3, 0):4.247592
+('qr-random_sample-getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 11, 0):4.262018
+('getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 3, 0):0.000034
+('getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 11, 0):0.000020
+('qr-random_sample-getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 15, 0):4.347413
+('getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 15, 0):0.000013
+('qr-random_sample-getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 19, 0):4.352695
+('qr-random_sample-getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 7, 0):4.358077
+('getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 7, 0):0.000014
+('getitem-0e6ee5259ab73c1ff4a84272e8b27c81-r1', 19, 0):0.000016
+('qr-stack-getitem-f3cf8b49b4c5abb319764f2b8fa9c224-r1', 1, 0):1.174628
+('getitem-f3cf8b49b4c5abb319764f2b8fa9c224-r1', 1, 0):0.000024

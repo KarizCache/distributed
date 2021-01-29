@@ -219,8 +219,9 @@ class ClientState:
     _wants_what: set
     _last_seen: double
     _versions: dict
+    _stats: dict # Kariz
 
-    __slots__ = ("_client_key", "_hash", "_wants_what", "_last_seen", "_versions")
+    __slots__ = ("_client_key", "_hash", "_wants_what", "_last_seen", "_versions", "_stats")
 
     def __init__(self, client: str, versions: dict = None):
         self._client_key = client
@@ -228,6 +229,7 @@ class ClientState:
         self._wants_what = set()
         self._last_seen = time()
         self._versions = versions or {}
+        self._stats = {}
 
     def __hash__(self):
         return self._hash
@@ -247,6 +249,10 @@ class ClientState:
     def __str__(self):
         return self._client_key
 
+    def dump_stats(self):
+        with open(f'/opt/dask-distributed/benchmark/{self._client_key.split("-")[1]}.json', 'w') as fd:
+            fd.write(str(self._stats))
+
     @property
     def client_key(self):
         return self._client_key
@@ -262,6 +268,7 @@ class ClientState:
     @property
     def versions(self):
         return self._versions
+
 
 
 @final
@@ -1113,6 +1120,8 @@ class TaskState:
     .. attribute: annotations: dict
 
         Task annotations
+
+    .. attribute: _client: ClientState
     """
 
     _key: str
@@ -1146,6 +1155,7 @@ class TaskState:
     _group: TaskGroup
     _group_key: str
     _color: set # Kariz
+    _client: ClientState # Kariz
 
     __slots__ = (
         # === General description ===
@@ -1195,7 +1205,8 @@ class TaskState:
         "_group",
         "_metadata",
         "_annotations",
-        "_color"
+        "_color",
+        "_client"
     )
 
     def __init__(self, key: str, run_spec: object):
@@ -1226,6 +1237,7 @@ class TaskState:
         self._metadata = {}
         self._annotations = {}
         self._color = set() # Kariz
+        self._client = None 
 
 
     def __hash__(self):
@@ -1429,13 +1441,19 @@ class TaskState:
             nbytes += ts.get_nbytes()
         return nbytes
 
+    # Kariz B
     def set_color(self, color):
         self._color = color
 
     def get_color(self) -> set:
         return self._color
 
+    def set_client(self, client):
+        self._client = client
 
+    def get_client(self):
+        return self._client
+    # Kariz E
 
 
 class _StateLegacyMapping(Mapping):
@@ -1966,6 +1984,10 @@ class Scheduler(ServerNode):
         Scheduler._instances.add(self)
         self.rpc.allow_offload = False
         self.status = Status.undefined
+
+        # Kariz B
+        self.execution_stats = {}
+        # Kariz E
 
     ##################
     # Administration #
@@ -2585,6 +2607,7 @@ class Scheduler(ServerNode):
             ts = self.tasks.get(k)
             if ts is None:
                 ts = self.new_task(k, tasks.get(k), "released")
+                ts.set_client(client) # Kariz
             elif not ts._run_spec:
                 ts._run_spec = tasks.get(k)
 
@@ -3339,8 +3362,11 @@ class Scheduler(ServerNode):
         if self.status == Status.running:
             logger.info("Remove client %s", client)
         self.log_event(["all", client], {"action": "remove-client", "client": client})
+
         try:
             cs: ClientState = self.clients[client]
+            cs.dump_stats()
+            print(Fore.CYAN, f'Client is {cs}', Style.RESET_ALL)
         except KeyError:
             # XXX is this a legitimate condition?
             pass
@@ -3416,10 +3442,11 @@ class Scheduler(ServerNode):
         logger.exception(clean_exception(**msg)[1])
 
     def handle_task_finished(self, key=None, worker=None, **msg):
-        # Kariz
         if worker not in self.workers:
             return
-        validate_key(key)
+        cs =  self.tasks[key].get_client()
+        print(Fore.RED, f'Lets see whom we belong to {cs}' , Style.RESET_ALL) 
+        self.clients[str(cs)]._stats[key] = {'worker': worker, 'msg': msg}
         print(Fore.CYAN, f'Key: {key}, Worker: {worker}, the message is {msg}', Style.RESET_ALL)
         r = self.stimulus_task_finished(key=key, worker=worker, **msg)
         self.transitions(r)
@@ -4857,7 +4884,7 @@ class Scheduler(ServerNode):
         Decide on a worker for task *ts*.  Return a WorkerState.
         """
         workers: dict = cast(dict, self.workers)
-        print(Fore.RED + "Kariz: Dask workers:", workers, Style.RESET_ALL) # Kariz
+        #print(Fore.RED + "Kariz: Dask workers:", workers, Style.RESET_ALL) # Kariz
 
         ws: WorkerState = None
         valid_workers: set = self.valid_workers(ts)
@@ -4901,7 +4928,7 @@ class Scheduler(ServerNode):
                 ws,
             )
             assert ws._address in workers
-        print(Fore.YELLOW, 'Kariz selected worker', ws, Style.RESET_ALL)
+        #print(Fore.YELLOW, 'Kariz selected worker', ws, Style.RESET_ALL)
         return ws
 
     def set_duration_estimate(self, ts: TaskState, ws: WorkerState):
@@ -6363,9 +6390,9 @@ def decide_worker(
         candidates = {ws for dts in deps for ws in dts._who_has}
 
     # Kariz B
-    print(Fore.YELLOW, "key", ts.key, "deps", ts.annotations, Style.RESET_ALL)
-    for ds in ts._dependencies:
-        print(Fore.LIGHTYELLOW_EX, ds, Style.RESET_ALL)
+    #print(Fore.YELLOW, "key", ts.key, "deps", ts.annotations, Style.RESET_ALL)
+    #for ds in ts._dependencies:
+    #    print(Fore.LIGHTYELLOW_EX, ds, Style.RESET_ALL)
     # Kariz E
 
     if valid_workers is None:
