@@ -2537,9 +2537,9 @@ class Scheduler(ServerNode):
 
         print(Fore.RED, "dump the graph to the file ", Style.RESET_ALL)
         node_to_id = {}
-        with open('/opt/dask-distributed/benchmark/dag.g', 'w') as fd:
+        with open(f'/opt/dask-distributed/benchmark/{clien.split("-")[1]}.g', 'w') as fd:
             for i, node in enumerate(dependencies):
-                fd.write('v,%d,0\n'%(i))
+                fd.write(f'v,{i},{node}\n')
                 node_to_id[node] = i
             for i, node in enumerate(dependencies):
                 for dep in dependencies[node]:
