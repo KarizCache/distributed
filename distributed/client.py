@@ -805,7 +805,10 @@ class Client:
         though the client was originally created in asynchronous mode we may
         find ourselves in contexts when it is better to operate synchronously.
         """
-        return self._asynchronous and self.loop is IOLoop.current()
+        try:
+            return self._asynchronous and self.loop is IOLoop.current()
+        except RuntimeError:
+            return False
 
     @property
     def dashboard_link(self):
@@ -2587,10 +2590,10 @@ class Client:
             if not isinstance(dsk, HighLevelGraph):
                 dsk = HighLevelGraph.from_collections(id(dsk), dsk, dependencies=())
 
-            dsk = highlevelgraph_pack(dsk, self, keyset)
-
             if isinstance(retries, Number) and retries > 0:
                 retries = {k: retries for k in dsk}
+
+            dsk = highlevelgraph_pack(dsk, self, keyset)
 
             # Create futures before sending graph (helps avoid contention)
             futures = {key: Future(key, self, inform=False) for key in keyset}

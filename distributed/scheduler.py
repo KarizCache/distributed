@@ -1,5 +1,6 @@
 import asyncio
 from collections import defaultdict, deque
+
 from collections.abc import Mapping, Set
 from contextlib import suppress
 from datetime import timedelta
@@ -85,15 +86,24 @@ from .stealing import WorkStealing
 from .variable import VariableExtension
 from .protocol.highlevelgraph import highlevelgraph_unpack
 
-from colorama import Fore, Back, Style # Kariz
+# Kariz B
+from colorama import Fore, Back, Style
+#import sys, traceback
+# Kariz E
 
 
 try:
+    from cython import compiled
+except ImportError:
+    compiled = False
+
+if compiled:
     from cython import (
         bint,
         cast,
         ccall,
         cclass,
+        cfunc,
         declare,
         double,
         exceptval,
@@ -103,7 +113,7 @@ try:
         Py_hash_t,
         Py_ssize_t,
     )
-except ImportError:
+else:
     from ctypes import (
         c_double as double,
         c_ssize_t as Py_hash_t,
@@ -120,6 +130,9 @@ except ImportError:
 
     def cclass(cls):
         return cls
+
+    def cfunc(func):
+        return func
 
     def declare(*a, **k):
         if len(a) == 2:
@@ -277,6 +290,12 @@ class WorkerState:
 
        This attribute is kept in sync with :attr:`TaskState.processing_on`.
 
+    .. attribute:: executing: {TaskState: duration}
+
+       A dictionary of tasks that are currently being run on this worker.
+       Each task state is asssociated with the duration in seconds which
+       the task has been running.
+
     .. attribute:: has_what: {TaskState}
 
        The set of tasks which currently reside on this worker.
@@ -330,6 +349,9 @@ class WorkerState:
        includes those actors whose state actually lives on this worker, not
        actors to which this worker has a reference.
 
+    .. attribute: color: set, Kariz
+
+       Annotate tasks with colors for serverless scheduler, the scheduler will later prefer one of the workers that has the color
     """
 
     # XXX need a state field to signal active/removed?
@@ -337,6 +359,7 @@ class WorkerState:
     _actors: set
     _address: str
     _bandwidth: double
+    _executing: dict
     _extra: dict
     _has_what: set
     _hash: Py_hash_t
@@ -363,6 +386,7 @@ class WorkerState:
         "_address",
         "_bandwidth",
         "_extra",
+        "_executing",
         "_has_what",
         "_hash",
         "_last_seen",
@@ -421,6 +445,7 @@ class WorkerState:
         self._actors = set()
         self._has_what = set()
         self._processing = {}
+        self._executing = {}
         self._resources = {}
         self._used_resources = {}
 
@@ -449,6 +474,10 @@ class WorkerState:
     @property
     def bandwidth(self):
         return self._bandwidth
+
+    @property
+    def executing(self):
+        return self._executing
 
     @property
     def extra(self):
@@ -565,6 +594,7 @@ class WorkerState:
         )
         ts: TaskState
         ws._processing = {ts._key: cost for ts, cost in self._processing.items()}
+        ws._executing = {ts._key: duration for ts, duration in self._executing.items()}
         return ws
 
     def __repr__(self):
@@ -683,11 +713,12 @@ class TaskPrefix:
         return [
             tg
             for tg in self._groups
-            if any(v != 0 for k, v in tg._states.items() if k != "forgotten")
+            if any([v != 0 for k, v in tg._states.items() if k != "forgotten"])
         ]
 
     @property
     def active_states(self):
+        tg: TaskGroup
         return merge_with(sum, [tg._states for tg in self.active])
 
     def __repr__(self):
@@ -1114,6 +1145,7 @@ class TaskState:
     _actor: bint
     _group: TaskGroup
     _group_key: str
+    _color: set # Kariz
 
     __slots__ = (
         # === General description ===
@@ -1163,6 +1195,7 @@ class TaskState:
         "_group",
         "_metadata",
         "_annotations",
+        "_color"
     )
 
     def __init__(self, key: str, run_spec: object):
@@ -1192,6 +1225,8 @@ class TaskState:
         self._group = None
         self._metadata = {}
         self._annotations = {}
+        self._color = set() # Kariz
+
 
     def __hash__(self):
         return self._hash
@@ -1393,6 +1428,14 @@ class TaskState:
         for ts in self._dependencies:
             nbytes += ts.get_nbytes()
         return nbytes
+
+    def set_color(self, color):
+        self._color = color
+
+    def get_color(self) -> set:
+        return self._color
+
+
 
 
 class _StateLegacyMapping(Mapping):
@@ -1942,6 +1985,7 @@ class Scheduler(ServerNode):
             "id": str(self.id),
             "address": self.address,
             "services": {key: v.port for (key, v) in self.services.items()},
+            "started": self.time_started,
             "workers": {
                 worker.address: worker.identity() for worker in self.workers.values()
             },
@@ -2130,6 +2174,7 @@ class Scheduler(ServerNode):
         resources=None,
         host_info=None,
         metrics=None,
+        executing=None,
     ):
         address = self.coerce_address(address, resolve_address)
         address = normalize_address(address)
@@ -2167,6 +2212,11 @@ class Scheduler(ServerNode):
         ws: WorkerState = self.workers[address]
 
         ws._last_seen = time()
+
+        if executing is not None:
+            ws._executing = {
+                self.tasks[key]: duration for key, duration in executing.items()
+            }
 
         if metrics:
             ws._metrics = metrics
@@ -2387,6 +2437,45 @@ class Scheduler(ServerNode):
             annotations,
         )
 
+    
+
+    # Kariz B
+    def color_graph(
+        self, 
+        keys=None,
+        dependencies=None
+    ):
+        dependencies = dependencies or {}
+        # assigned colors
+        color = 0 # colors range from 0x000000 to 0xFFFFFF
+        stack = list(keys)
+        touched_keys = set()
+        touched_tasks = []
+        while stack:
+            k = stack[-1]
+            if k in touched_keys:
+                continue
+            deps = dependencies[k]
+            resolve = 1
+            colors = set()
+            for v in deps:
+                if v not in touched_keys:
+                    stack.append(v)
+                    resolve = 0
+                else:
+                    colors.update(self.tasks[v].get_color())
+            if not len(colors): 
+                colors.add(color)
+                color += 1; 
+
+            if resolve:
+                self.tasks[k].set_color(colors)
+                stack.pop()
+                touched_keys.add(k)
+        pass
+    # Kariz E
+
+
     def update_graph(
         self,
         client=None,
@@ -2423,6 +2512,16 @@ class Scheduler(ServerNode):
                 del tasks[k]
 
         dependencies = dependencies or {}
+
+        print(Fore.RED, "dump the graph to the file ", Style.RESET_ALL)
+        node_to_id = {}
+        with open('/opt/dask-distributed/benchmark/dag.g', 'w') as fd:
+            for i, node in enumerate(dependencies):
+                fd.write('v,%d,0\n'%(i))
+                node_to_id[node] = i
+            for i, node in enumerate(dependencies):
+                for dep in dependencies[node]:
+                    fd.write('e,%d,%d,0\n'%(node_to_id[dep], i))
 
         n = 0
         while len(tasks) != n:  # walk through new tasks, cancel any bad deps
@@ -2503,6 +2602,9 @@ class Scheduler(ServerNode):
             for dep in deps:
                 dts = self.tasks[dep]
                 ts.add_dependency(dts)
+
+        # Kariz, Color the graph
+        self.color_graph(keys, dependencies)
 
         # Compute priorities
         if isinstance(user_priority, Number):
@@ -4783,8 +4885,7 @@ class Scheduler(ServerNode):
             worker_pool_dv = cast(dict, worker_pool)
             n_workers: Py_ssize_t = len(worker_pool_dv)
             
-            #print(Fore.BLUE + "Kariz worker pool:", worker_pool,  "Kariz worker pool dv:", worker_pool_dv)
-            
+            # Kariz
             #if n_workers < 20:  # smart but linear in small case
             if n_workers < 0:
                 ws = min(worker_pool.values(), key=operator.attrgetter("occupancy"))
@@ -4800,6 +4901,23 @@ class Scheduler(ServerNode):
             assert ws._address in workers
         print(Fore.YELLOW, 'Kariz selected worker', ws, Style.RESET_ALL)
         return ws
+
+    def set_duration_estimate(self, ts: TaskState, ws: WorkerState):
+        """Estimate task duration using worker state and task state.
+
+        If a task takes longer than twice the current average duration we
+        estimate the task duration to be 2x current-runtime, otherwise we set it
+        to be the average duration.
+        """
+        duration: double = self.get_task_duration(ts)
+        comm: double = self.get_comm_cost(ts, ws)
+        total_duration: double = duration + comm
+        if ts in ws._executing:
+            exec_time: double = ws._executing[ts]
+            if exec_time > 2 * duration:
+                total_duration = 2 * exec_time
+        ws._processing[ts] = total_duration
+        return total_duration
 
     def transition_waiting_processing(self, key):
         try:
@@ -4821,14 +4939,10 @@ class Scheduler(ServerNode):
                 return {}
             worker = ws._address
 
-            duration = self.get_task_duration(ts)
-            comm = self.get_comm_cost(ts, ws)
-            occupancy = duration + comm
-
-            ws._processing[ts] = occupancy
+            duration_estimate = self.set_duration_estimate(ts, ws)
             ts._processing_on = ws
-            ws._occupancy += occupancy
-            self.total_occupancy += occupancy
+            ws._occupancy += duration_estimate
+            self.total_occupancy += duration_estimate
             ts.state = "processing"
             self.consume_resources(ts, ws)
             self.check_idle_saturated(ws)
@@ -4839,7 +4953,7 @@ class Scheduler(ServerNode):
 
             # logger.debug("Send job to worker: %s, %s", worker, key)
 
-            self.send_task_to_worker(worker, ts, duration)
+            self.send_task_to_worker(worker, ts)
 
             return {}
         except Exception as e:
@@ -5540,7 +5654,7 @@ class Scheduler(ServerNode):
             if ts._state == "forgotten" and ts._group._name in self.task_groups:
                 # Remove TaskGroup if all tasks are in the forgotten state
                 tg: TaskGroup = ts._group
-                if not any(tg._states.get(s) for s in ALL_TASK_STATES):
+                if not any([tg._states.get(s) for s in ALL_TASK_STATES]):
                     ts._prefix._groups.remove(tg)
                     del self.task_groups[tg._name]
 
@@ -5573,7 +5687,7 @@ class Scheduler(ServerNode):
 
     def story(self, *keys):
         """ Get all transitions that touch one of the input keys """
-        keys = set(keys)
+        keys = {key.key if isinstance(key, TaskState) else key for key in keys}
         return [
             t for t in self.transition_log if t[0] in keys or keys.intersection(t[3])
         ]
@@ -6108,27 +6222,27 @@ class Scheduler(ServerNode):
 
     def _reevaluate_occupancy_worker(self, ws: WorkerState):
         """ See reevaluate_occupancy """
-        old = ws._occupancy
-
-        new = 0
-        nbytes = 0
+        old: double = ws._occupancy
+        new: double = 0
+        diff: double
+        ts: TaskState
+        est: double
         for ts in ws._processing:
-            duration = self.get_task_duration(ts)
-            comm = self.get_comm_cost(ts, ws)
-            occupancy = duration + comm
-            ws._processing[ts] = occupancy
-            new += occupancy
+            est = self.set_duration_estimate(ts, ws)
+            new += est
 
         ws._occupancy = new
-        self.total_occupancy += new - old
+        diff = new - old
+        self.total_occupancy += diff
         self.check_idle_saturated(ws)
 
         # significant increase in duration
-        if (new > old * 1.3) and ("stealing" in self.extensions):
-            steal = self.extensions["stealing"]
-            for ts in ws._processing:
-                steal.remove_key_from_stealable(ts)
-                steal.put_key_in_stealable(ts)
+        if new > old * 1.3:
+            steal = self.extensions.get("stealing")
+            if steal is not None:
+                for ts in ws._processing:
+                    steal.remove_key_from_stealable(ts)
+                    steal.put_key_in_stealable(ts)
 
     async def check_worker_ttl(self):
         ws: WorkerState
@@ -6216,6 +6330,8 @@ class Scheduler(ServerNode):
             return len(self.workers) - len(to_close)
 
 
+@cfunc
+@exceptval(check=False)
 def decide_worker(
     ts: TaskState, all_workers, valid_workers: set, objective
 ) -> WorkerState:
@@ -6243,6 +6359,13 @@ def decide_worker(
         candidates = set(all_workers)
     else:
         candidates = {ws for dts in deps for ws in dts._who_has}
+
+    # Kariz B
+    print(Fore.YELLOW, "key", ts.key, "deps", ts.annotations, Style.RESET_ALL)
+    for ds in ts._dependencies:
+        print(Fore.LIGHTYELLOW_EX, ds, Style.RESET_ALL)
+    # Kariz E
+
     if valid_workers is None:
         if not candidates:
             candidates = set(all_workers)

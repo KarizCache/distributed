@@ -1,0 +1,12 @@
+('qr-random_sample-getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 0, 0):5.755593
+('qr-random_sample-getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 16, 0):5.764372
+('qr-random_sample-getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 8, 0):5.781123
+('qr-random_sample-getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 12, 0):5.779948
+('getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 0, 0):0.005708
+('getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 8, 0):0.002388
+('getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 16, 0):0.002659
+('getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 12, 0):0.001709
+('qr-random_sample-getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 4, 0):5.834783
+('getitem-f8c6b8f68b14026d4f224d19e871a525-r1', 4, 0):0.001043
+('qr-stack-getitem-87c37e498622f9398566d48b61e4caa3-r1', 0, 0):1.807018
+('getitem-87c37e498622f9398566d48b61e4caa3-r1', 0, 0):0.002001
