@@ -88,6 +88,8 @@ from .protocol.highlevelgraph import highlevelgraph_unpack
 
 # Kariz B
 from colorama import Fore, Back, Style
+import random
+from uhashring import HashRing
 #import sys, traceback
 # Kariz E
 
@@ -250,8 +252,9 @@ class ClientState:
         return self._client_key
 
     def dump_stats(self):
-        with open(f'/opt/dask-distributed/benchmark/{self._client_key.split("-")[1]}.json', 'w') as fd:
-            fd.write(str(self._stats))
+        if True:
+            with open(f'/opt/dask-distributed/benchmark/stats/{self._client_key.split("-")[1]}_{self._client_key.split("-")[2]}.json', 'w') as fd:
+                fd.write(str(self._stats))
 
     @property
     def client_key(self):
@@ -2535,15 +2538,20 @@ class Scheduler(ServerNode):
 
         dependencies = dependencies or {}
 
-        print(Fore.RED, "dump the graph to the file ", Style.RESET_ALL)
-        node_to_id = {}
-        with open(f'/opt/dask-distributed/benchmark/{clien.split("-")[1]}.g', 'w') as fd:
-            for i, node in enumerate(dependencies):
-                fd.write(f'v,{i},{node}\n')
-                node_to_id[node] = i
-            for i, node in enumerate(dependencies):
-                for dep in dependencies[node]:
-                    fd.write('e,%d,%d,0\n'%(node_to_id[dep], i))
+        # Kariz B
+        if True:
+           self.wit = itertools.cycle(self.workers.keys())
+           self.hash_ring = HashRing(nodes=list(self.workers.keys()))
+           print(f'{Fore.RED}dump the graph to the file and workers are {self.workers} {Style.RESET_ALL}')
+           node_to_id = {}
+           with open(f'/opt/dask-distributed/benchmark/stats/{client.split("-")[1]}_{client.split("-")[2]}.g', 'w') as fd:
+               for i, node in enumerate(dependencies):
+                   fd.write(f'v,{i},{node}\n')
+                   node_to_id[node] = i
+               for i, node in enumerate(dependencies):
+                   for dep in dependencies[node]:
+                       fd.write('e,%d,%d,0\n'%(node_to_id[dep], i))
+        # Kariz E
 
         n = 0
         while len(tasks) != n:  # walk through new tasks, cancel any bad deps
@@ -3366,7 +3374,6 @@ class Scheduler(ServerNode):
         try:
             cs: ClientState = self.clients[client]
             cs.dump_stats()
-            print(Fore.CYAN, f'Client is {cs}', Style.RESET_ALL)
         except KeyError:
             # XXX is this a legitimate condition?
             pass
@@ -3445,9 +3452,7 @@ class Scheduler(ServerNode):
         if worker not in self.workers:
             return
         cs =  self.tasks[key].get_client()
-        print(Fore.RED, f'Lets see whom we belong to {cs}' , Style.RESET_ALL) 
         self.clients[str(cs)]._stats[key] = {'worker': worker, 'msg': msg}
-        print(Fore.CYAN, f'Key: {key}, Worker: {worker}, the message is {msg}', Style.RESET_ALL)
         r = self.stimulus_task_finished(key=key, worker=worker, **msg)
         self.transitions(r)
 
@@ -4928,7 +4933,16 @@ class Scheduler(ServerNode):
                 ws,
             )
             assert ws._address in workers
-        #print(Fore.YELLOW, 'Kariz selected worker', ws, Style.RESET_ALL)
+
+        # Kariz round robin (rr)/consistent_hash (ch) of name of task/random (rand)
+        policy = 'rr'
+        if policy == 'rand':
+            ws_k = random.choise(self.workers.keys())
+        elif policy == 'rr':
+            ws_k = next(self.wit)
+        elif policy == 'rr':
+            ws = self.hash_ring.get_node(ts.key)
+        ws = self.workers[next(self.wit)]
         return ws
 
     def set_duration_estimate(self, ts: TaskState, ws: WorkerState):
@@ -6415,9 +6429,6 @@ def decide_worker(
             break
     else:
         ws = min(candidates, key=objective)
-    print('Kariz serverless', ws) #Kariz
-    with open('/root/testfunc', 'w') as fd:
-        fd.write('Hello I am in decide worker')
 
     return ws
 

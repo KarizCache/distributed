@@ -15,28 +15,32 @@ from dask import delayed
 import operator 
 
 import time
-import timeit
+import datetime
+
+
+
+# Start the computation.
+n_samples_classification = 1000
+n_samples = 800000
+chunks = n_samples//20
+
+name = f'parallelizing_svm_800k_40k'
 
 client = Client('10.255.23.115:8786')
 
-print('I am before compute')
-
-
-# Start the computation.
-
-
-X, y = sklearn.datasets.make_classification(n_samples=1000)
+X, y = sklearn.datasets.make_classification(n_samples=n_samples_classification)
 clf = ParallelPostFit(SVC(gamma='scale'))
 clf.fit(X, y)
 
-X, y = dask_ml.datasets.make_classification(n_samples=800000,
-                                            random_state=800000,
-                                            chunks=800000 // 20)
+X, y = dask_ml.datasets.make_classification(n_samples = n_samples,
+                                            random_state = n_samples,
+                                            chunks = chunks)
 
 # Start the computation.
+start = datetime.datetime.now()
 results = clf.predict(X).compute(scheduler='distributed')
+end = datetime.datetime.now()
 
+print(f'Parallelizing svm is done in {end - start}')
 
-print("Done with the compute")
-
-clf.predict(X).visualize(filename='parallel_svm.png')
+clf.predict(X).visualize(filename=f'{name}.png')

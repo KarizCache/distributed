@@ -2042,6 +2042,7 @@ class Worker(ServerNode):
             necessarily equivalent to the full list of dependencies of ``dep``
             as some dependencies may already be present on this worker.
         """
+        print(f'worker: {worker}, dep: {dep}, deps: {deps}, total_nbytes: {total_nbytes}')
         if self.status != Status.running:
             return
         with log_errors():
@@ -2598,8 +2599,10 @@ class Worker(ServerNode):
 
             function, args, kwargs = ts.runspec
 
+            from sys import getsizeof 
             start = time()
             data = {}
+            data_size = 0
             for dep in ts.dependencies:
                 k = dep.key
                 try:
@@ -2608,6 +2611,9 @@ class Worker(ServerNode):
                     from .actor import Actor  # TODO: create local actor
 
                     data[k] = Actor(type(self.actors[k]), self.address, k, self)
+                data_size += getsizeof(data[k])
+
+
             args2 = pack_data(args, data, key_types=(bytes, str))
             kwargs2 = pack_data(kwargs, data, key_types=(bytes, str))
             stop = time()
@@ -2637,11 +2643,6 @@ class Worker(ServerNode):
                         self.scheduler_delay,
                     ),
                 )
-                # Kariz B
-                #print(Fore.BLUE, 'host', self.address, ', task', ts.key, ', runtime', result['stop'] - result['start'], Style.RESET_ALL)
-                with open('/opt/dask-distributed/debug/%s'%(self.address.rsplit('/', 1)[1].replace(':', '_')), 'a') as fd:
-                    fd.write('%s:%.6f\n'%(ts.key, result['stop'] - result['start']))
-                # Kariz E
 
             except RuntimeError as e:
                 executor_error = e
@@ -2665,6 +2666,7 @@ class Worker(ServerNode):
             ts.startstops.append(
                 {"action": "compute", "start": result["start"], "stop": result["stop"]}
             )
+            ts.startstops.append({"action": "inputsize", "start": data_size, "stop": data_size}) # Kariz
             self.threads[ts.key] = result["thread"]
 
             if result["op"] == "task-finished":
@@ -3501,6 +3503,7 @@ def apply_function(
     thread_state.key = key
     start = time()
     try:
+        print(f'args:', *args, 'kwargs:', **kwargs)
         result = function(*args, **kwargs)
     except Exception as e:
         msg = error_message(e)
